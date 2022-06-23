@@ -1,0 +1,8 @@
+.hero{
+    background-image: url('images/bac1.jpg');
+    height: 400px;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
