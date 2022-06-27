@@ -11,6 +11,11 @@
 </head>
 <body>
 
+    <?php
+    session_start();
+    require_once 'actions/mySession.php';
+    ?>
+
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="index.php">PopNEWS</a>
@@ -35,16 +40,31 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Member
+                        <?php
+                            if ( checkSession('username') ) {
+                                echo getSession('username');
+                            } else {
+                                echo 'Member';
+                            }
+                            
+                        ?>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="register.php">Register</a></li>
-                        <li><a class="dropdown-item" href="login.php">Login</a></li>
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                        <?php
+                            if ( checkSession('username') ) {
+                                echo "<li><a class='dropdown-item' href='actions/logout.php'>Logout</a></li>";
+                            } else {
+                                echo "<li><a class='dropdown-item' href='register.php'>Register</a></li>
+                                <li><a class='dropdown-item' href='login.php'>Login</a></li>";
+                            }
+                            
+                        ?>
+                        
+                        
                     </ul>
                 </li>
             </ul>
             </div>
         </div>
     </nav>
-    <div class="mt-5"></div>
+    <div class="p-4"></div>

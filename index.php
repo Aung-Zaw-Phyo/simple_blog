@@ -2,9 +2,6 @@
     include_once 'views/doc1.php';
     include_once 'views/hero.php';
 ?>
-
-    
-
     <div class="container py-5">
         <h2 class="text-center mb-4">Latest News</h2>
         <div class="row g-3">

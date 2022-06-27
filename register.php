@@ -1,6 +1,26 @@
 <?php
     include_once "views/doc1.php";
+    require_once 'actions/mySession.php';
+
+    
+        
 ?>
+
+    <?php
+        if (checkSession('message')) {
+    ?>
+    <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+        <div class="container">
+            <strong> <?php echo getSession('message') ?> </strong> 
+            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
+            <?php session_destroy() ?>
+            </button>
+        </div>    
+    </div>
+    <?php
+        }
+    ?>
+
     <div class="container py-5">
     <h2 class="text-center mb-4">Register Form</h2>
         <div class="row">
