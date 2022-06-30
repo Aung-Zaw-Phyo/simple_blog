@@ -22,6 +22,9 @@
                 break;
             case 'login Success!':
                 $message = 'login Success!';
+                if(checkSession('is_admin')){
+                    return header('Location: ../admin.php');
+                }
                 header("Location: ../index.php");
                 break;
             default:

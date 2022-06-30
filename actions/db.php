@@ -44,12 +44,15 @@
     function login ($email, $password) {
         $password = genPass($password);
         $db = dbConnect();
-        $qry = "SELECT username FROM users WHERE email='$email' && password='$password' ";
+        $qry = "SELECT * FROM users WHERE email='$email' && password='$password' ";
         $result = mysqli_query($db, $qry);
         if (mysqli_num_rows($result)) {
             $username = '';
             foreach($result as $single){
                 $username = $single['username'];
+                if ($single['is_admin']) {
+                    setSession('is_admin', $single['is_admin']);
+                }
             }
             setSession('username', $username);
             return 'login Success!';

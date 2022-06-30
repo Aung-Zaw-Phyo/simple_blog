@@ -1,5 +1,10 @@
 <?php
     include_once "views/doc1.php";
+
+    if (checkSession('username')) {
+        return header('Location: index.php');
+    }
+    
 ?>
 
     <?php

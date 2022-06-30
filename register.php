@@ -2,7 +2,9 @@
     include_once "views/doc1.php";
     require_once 'actions/mySession.php';
 
-    
+    if (checkSession('username')) {
+        return header('Location: index.php');
+    }
         
 ?>
 

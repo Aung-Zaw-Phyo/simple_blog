@@ -12,8 +12,11 @@
 <body>
 
     <?php
-    session_start();
-    require_once 'actions/mySession.php';
+        session_start();
+        require_once 'actions/mySession.php';
+        require_once 'actions/dbSym.php';
+
+        $categories = getCategories();
     ?>
 
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
@@ -29,13 +32,12 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        News
+                        Posts 
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Politic</a></li>
-                        <li><a class="dropdown-item" href="#">Wars</a></li>
-                        <li><a class="dropdown-item" href="#">Economy</a></li>
-                        <li><a class="dropdown-item" href="#">Technology</a></li>
+                        <?php foreach($categories as $category){ ?>
+                            <li><a class="dropdown-item" href="#"> <?php echo $category['name']; ?> </a></li>
+                        <?php } ?>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
