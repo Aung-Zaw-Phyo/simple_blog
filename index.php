@@ -3,12 +3,20 @@
     include_once 'views/hero.php';
 
     $posts = '';
+    $start = 0;
+    $count = 0;
+    if(isset($_GET['start'])){
+        $start = $_GET['start'];
+    }
     if (checkSession('username')) {
-        $posts = getPostsFil('special');
+        $posts = getPostsFil('special', $start);
+        $count = getPostsCount('special');
     }else{
-        $posts = getPostsFil('normal');
+        $posts = getPostsFil('normal', $start);
+        $count = getPostsCount('normal');
     }
     
+
 ?>
     <div class="container py-5">
         <h2 class="text-center mb-4">Latest News</h2>
@@ -26,7 +34,21 @@
             <?php } ?>
         </div>
     </div>
-
+    <div class="container d-flex justify-content-center">
+        <nav class="" aria-label="...">
+            <ul class="pagination">
+                <?php 
+                $t = 0;
+                for($i = 0; $i < $count; $i += 6){
+                    $t++;
+                ?>
+                <li class="page-item <?php echo $start==$i?'active':''; ?>" ><a class="page-link" href="index.php?start=<?php echo $i; ?>"><?php echo $t; ?></a></li>
+                <?php  
+                } 
+                ?>
+            </ul>
+        </nav>
+    </div>
 <?php
     include_once "views/doc2.php";
 ?>

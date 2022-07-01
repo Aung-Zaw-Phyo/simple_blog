@@ -35,11 +35,11 @@
                         <input type="hidden" name="id" value="<?php echo $post['id'];?>">
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>
-                            <input type="text" name="title" class="form-control" value="<?php echo $post['title'];?>" id="name" placeholder="Enter title">
+                            <input type="text" name="title" class="form-control" value="<?php echo $post['title'];?>" id="name" placeholder="Enter title" required>
                         </div>
                         <div class="mb-3">
                             <label for="body" class="form-label">Body</label>
-                            <textarea name="body" class="form-control" placeholder="Enter content" id="body" cols="30" rows="5">
+                            <textarea name="body" class="form-control" placeholder="Enter content" id="body" cols="30" rows="5" required>
                                 <?php echo $post['body'];?>
                             </textarea>
                         </div>
@@ -51,14 +51,14 @@
                         </div>
                         <div class="mb-3">
                             <label for="type" class="form-label">Type</label>
-                            <select name="type" class="form-control" id="type">
+                            <select name="type" class="form-control" id="type" required>
                                 <option value="normal" <?php echo $post['type']=='normal' ? 'selected': ''; ?>>normal</option>
                                 <option value="special" <?php echo $post['type']=='special' ? 'selected': ''; ?>>special</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label for="category" class="form-label">Category</label>
-                            <select name="category_id" class="form-control" id="category">
+                            <select name="category_id" class="form-control" id="category"  required>
                                 <?php foreach($categories as $category){ ?>
                                     <option <?php echo $post['category_id']==$category['id']? 'selected': ''; ?> value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
                                 <?php } ?>

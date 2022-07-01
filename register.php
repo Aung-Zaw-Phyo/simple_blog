@@ -31,19 +31,19 @@
                     <form action="actions/post_register.php" method="POST">
                         <div class="mb-3">
                             <label for="name" class="form-label">Your name</label>
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Enter your name ">
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Enter your name "  required>
                         </div>
                         <div class="mb-3">
                             <label for="username" class="form-label">Your username</label>
-                            <input type="text" name="username" class="form-control" id="username" placeholder="Enter your username ">
+                            <input type="text" name="username" class="form-control" id="username" placeholder="Enter your username "  required>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Your email</label>
-                            <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email ">
+                            <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email "  required>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Your password</label>
-                            <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password ">
+                            <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password "  required>
                         </div>
                         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                     </form>

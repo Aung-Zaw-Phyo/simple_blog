@@ -35,7 +35,7 @@
                         <input type="hidden" name="id" value="<?php echo $category['id'];?>">
                         <div class="mb-3">
                             <label for="name" class="form-label">Category name</label>
-                            <input type="text" name="name" class="form-control" value="<?php echo $category['name'];?>" id="name" placeholder="Enter category name">
+                            <input type="text" name="name" class="form-control" value="<?php echo $category['name'];?>" id="name" placeholder="Enter category name" required>
                         </div>
                         <button type="submit" name="submit" class="btn btn-primary">Update</button>
                     </form>

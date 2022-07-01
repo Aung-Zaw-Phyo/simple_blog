@@ -4,14 +4,24 @@ require_once 'db.php';
 
 // home 
 
-function getPostsFil ($type) {
+function getPostsFil ($type, $start) {
     $db = dbConnect();
-    $qry = "SELECT * FROM posts ORDER BY id DESC";
+    $qry = "SELECT * FROM posts ORDER BY id DESC LIMIT $start, 6";
     if($type == 'normal'){
-        $qry = "SELECT * FROM posts WHERE type='$type' ORDER BY id DESC";
+        $qry = "SELECT * FROM posts WHERE type='$type' ORDER BY id DESC LIMIT $start, 6";
     }
     $result = mysqli_query($db, $qry);
     return $result;
+}
+
+function getPostsCount ($type) {
+    $db = dbConnect();
+    $qry = "SELECT * FROM posts ORDER BY id DESC ";
+    if($type == 'normal'){
+        $qry = "SELECT * FROM posts WHERE type='$type' ORDER BY id DESC ";
+    }
+    $result = mysqli_query($db, $qry);
+    return mysqli_num_rows($result);
 }
 
 function getPostsFilCategory ($id, $type) {

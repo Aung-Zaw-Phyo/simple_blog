@@ -31,11 +31,11 @@
                     <form action="actions/post.php" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>
-                            <input type="text" name="title" class="form-control" id="title" placeholder="Enter title">
+                            <input type="text" name="title" class="form-control" id="title" placeholder="Enter title"  required>
                         </div>
                         <div class="mb-3">
                             <label for="body" class="form-label">Body</label>
-                            <textarea name="body" class="form-control" placeholder="Enter content" id="body" cols="30" rows="5"></textarea>
+                            <textarea name="body" class="form-control" placeholder="Enter content" id="body" cols="30" rows="5"  required></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="thumbnail" class="form-label">Thumbnail</label>
@@ -43,14 +43,14 @@
                         </div>
                         <div class="mb-3">
                             <label for="type" class="form-label">Type</label>
-                            <select name="type" class="form-control" id="type">
+                            <select name="type" class="form-control" id="type"  required>
                                 <option value="normal">normal</option>
                                 <option value="special">special</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label for="category" class="form-label">Category</label>
-                            <select name="category_id" class="form-control" id="category">
+                            <select name="category_id" class="form-control" id="category"  required>
                                 <?php foreach($categories as $category){ ?>
                                     <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
                                 <?php } ?>
