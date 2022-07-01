@@ -2,6 +2,45 @@
 require_once 'db.php';
 
 
+// home 
+
+function getPostsFil ($type) {
+    $db = dbConnect();
+    $qry = "SELECT * FROM posts ORDER BY id DESC";
+    if($type == 'normal'){
+        $qry = "SELECT * FROM posts WHERE type='$type' ORDER BY id DESC";
+    }
+    $result = mysqli_query($db, $qry);
+    return $result;
+}
+
+function getPostsFilCategory ($id, $type) {
+    $db = dbConnect();
+    $qry = "SELECT * FROM posts WHERE category_id=$id ORDER BY id DESC";
+    if($type == 'normal'){
+        $qry = "SELECT * FROM posts WHERE category_id=$id AND type='$type' ORDER BY id DESC";
+    }
+    $result = mysqli_query($db, $qry);
+    return $result;
+}
+
+function check ($id) {
+    $db = dbConnect();
+    $qry = "SELECT * FROM categories WHERE id=$id";
+    $result = mysqli_query($db, $qry);
+    return $result;
+}
+
+function getCaNames ($id) {
+    $db = dbConnect();
+    $qry = "SELECT name FROM categories WHERE id=$id";
+    $result = mysqli_query($db, $qry);
+    return $result;
+}
+
+
+
+
 function getPosts () {
     $db = dbConnect();
     $qry = "SELECT * FROM posts ";

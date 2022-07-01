@@ -22,6 +22,9 @@
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="index.php">PopNEWS</a>
+            <?php if(checkSession('is_admin')){ ?>
+                <a class="" href="admin.php">Admin Panel</a>
+            <?php } ?>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -36,7 +39,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <?php foreach($categories as $category){ ?>
-                            <li><a class="dropdown-item" href="#"> <?php echo $category['name']; ?> </a></li>
+                            <li><a class="dropdown-item" href="blog.php?category=<?php echo $category['id']; ?>"> <?php echo $category['name']; ?> </a></li>
                         <?php } ?>
                     </ul>
                 </li>

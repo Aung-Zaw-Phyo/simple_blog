@@ -1,17 +1,36 @@
 <?php
-    include_once 'views/doc1.php';
-    include_once 'views/hero.php';
+require_once 'views/doc1.php';
 
-    $posts = '';
-    if (checkSession('username')) {
-        $posts = getPostsFil('special');
-    }else{
-        $posts = getPostsFil('normal');
+$id = '';
+$name = '';
+if(isset($_GET['category'])){
+    $id = $_GET['category'];
+    $result = check($id);
+    if(!mysqli_num_rows($result)){
+        return header('location: index.php');
     }
-    
+}else{
+    return header('location: index.php');
+}
+
+$posts = '';
+if (checkSession('username')) {
+    $posts = getPostsFilCategory($id, 'special');
+}else{
+    $posts = getPostsFilCategory($id, 'normal');
+}
+
+$names = getCaNames($id);
+$name = '';
+foreach($names as $name){
+    $name = $name['name'];
+}
+
+
 ?>
+
     <div class="container py-5">
-        <h2 class="text-center mb-4">Latest News</h2>
+        <h2 class="text-center mb-4"> <?php echo ucfirst($name) ?> News</h2>
         <div class="row g-3">
             <?php foreach($posts as $post){ ?>
             <div class="col-md-4">
@@ -27,6 +46,7 @@
         </div>
     </div>
 
+
 <?php
-    include_once "views/doc2.php";
+require_once 'views/doc2.php';
 ?>
